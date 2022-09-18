@@ -1,0 +1,5 @@
+external-dns:
+  provider: aws
+  aws:
+    region: # externally provided
+  policy: sync
