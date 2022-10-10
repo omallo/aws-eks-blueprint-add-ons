@@ -1,0 +1,9 @@
+external-dns:
+  provider: aws
+  aws:
+    region: # external parameter
+  serviceAccount:
+    create: false
+    name: external-dns-sa
+  policy: sync
+  zoneIdFilters: # external parameter

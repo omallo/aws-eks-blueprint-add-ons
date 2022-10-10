@@ -1,0 +1,7 @@
+addons:
+
+  cert-manager:
+    enabled: true
+
+  ingress-nginx:
+    enabled: true

@@ -1,0 +1,18 @@
+issuers:
+  selfSigned:
+    name: cert-manager-selfsigned
+  ca:
+    name: cert-manager-ca
+
+certificates:
+  ca:
+    privateKey:
+      algorithm: ECDSA
+      size: 256
+
+cert-manager:
+  installCRDs: true
+  extraArgs:
+    - --enable-certificate-owner-ref=true
+  webhook:
+    securePort: 10260 # avoid port clashes on Fargate

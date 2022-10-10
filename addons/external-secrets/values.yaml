@@ -1,0 +1,8 @@
+secretStores:
+  awsSecretsManager:
+    name: aws-secrets-manager
+    region: # external parameter
+
+external-secrets:
+  webhook:
+    port: 9443 # avoid port clashes on Fargate

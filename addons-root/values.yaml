@@ -1,0 +1,36 @@
+argocd:
+  repoUrl: https://github.com/omallo/aws-eks-blueprint-add-ons.git
+  targetRevision: main
+
+addons:
+
+  cert-manager:
+    enabled: false
+    syncWave: 0
+    namespace: cert-manager
+
+  external-dns:
+    enabled: false
+    syncWave: 0
+    namespace: external-dns
+    # parameters:
+    #   - name: external-dns.aws.region
+    #     value:
+    #   - name: external-dns.zoneIdFilters
+    #     value:
+
+  external-secrets:
+    enabled: false
+    syncWave: 0
+    namespace: external-secrets
+    # parameters:
+    #   - name: secretStores.awsSecretsManager.region
+    #     value:
+
+  ingress-nginx:
+    enabled: false
+    syncWave: 0
+    namespace: ingress-nginx
+    # parameters:
+    #   - name: ingress-nginx.controller.service.annotations.'service.beta.kubernetes.io/aws-load-balancer-ssl-cert'
+    #     value:

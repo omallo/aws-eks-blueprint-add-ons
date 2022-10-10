@@ -1,8 +1,0 @@
-external-dns:
-  provider: aws
-  aws:
-    region: # externally provided
-  serviceAccount:
-    create: false
-    name: # externally provided
-  policy: sync

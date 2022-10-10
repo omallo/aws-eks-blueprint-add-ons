@@ -1,0 +1,56 @@
+{{- range $k, $v := .Values.addons }}
+{{- if $v.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $k }}
+  namespace: argocd
+  annotations:
+    {{- with $v.syncWave }}
+    argocd.argoproj.io/sync-wave: "{{ . }}"
+    {{- end }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: {{ $.Values.argocd.repoUrl }}
+    path: addons/{{ $k }}
+    targetRevision: {{ $.Values.argocd.targetRevision }}
+    helm:
+      {{- with $v.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $v.parameters }}
+      parameters:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $v.namespace }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+      - FailOnSharedResource=true
+      - RespectIgnoreDifferences=true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 5m
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+{{- end }}
+{{- end }}

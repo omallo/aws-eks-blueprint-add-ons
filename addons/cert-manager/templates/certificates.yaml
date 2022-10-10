@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Values.issuers.ca.name }}
+spec:
+  isCA: true
+  commonName: {{ .Values.issuers.ca.name }}
+  secretName: {{ .Values.issuers.ca.name }}-root
+  privateKey:
+    {{ toYaml .Values.certificates.ca.privateKey | nindent 4 }}
+  issuerRef:
+    name: {{ .Values.issuers.selfSigned.name }}
+    kind: ClusterIssuer
+    group: cert-manager.io

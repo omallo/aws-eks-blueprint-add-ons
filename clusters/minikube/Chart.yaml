@@ -1,0 +1,7 @@
+apiVersion: v2
+name: minikube-cluster
+version: 0.0.0
+dependencies:
+  - name: cluster
+    version: 0.0.0
+    repository: file://../../addons-root
