@@ -1,7 +1,6 @@
-addons:
-
-  cert-manager:
-    enabled: false
-
-  ingress-nginx:
-    enabled: false
+cluster:
+  addons:
+    cert-manager:
+      enabled: false
+    ingress-nginx:
+      enabled: false
