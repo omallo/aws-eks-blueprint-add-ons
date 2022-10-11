@@ -3,4 +3,4 @@ addons-root:
     cert-manager:
       enabled: false
     ingress-nginx:
-      enabled: false
+      enabled: true
