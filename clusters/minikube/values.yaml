@@ -4,4 +4,4 @@ addons:
     enabled: false
 
   ingress-nginx:
-    enabled: true
+    enabled: false
