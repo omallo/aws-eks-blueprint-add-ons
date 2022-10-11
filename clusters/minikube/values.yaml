@@ -1,4 +1,4 @@
-cluster:
+addons-root:
   addons:
     cert-manager:
       enabled: false
