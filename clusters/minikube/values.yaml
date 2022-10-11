@@ -2,10 +2,13 @@ addons-root:
   addons:
 
     cert-manager:
-      enabled: false
+      enabled: true
 
     ingress-nginx:
       enabled: true
       parameters:
         - name: ingress-nginx.controller.service.type
           value: NodePort
+
+    reloader:
+      enabled: true

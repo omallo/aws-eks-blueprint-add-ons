@@ -34,3 +34,8 @@ addons:
     # parameters:
     #   - name: ingress-nginx.controller.service.annotations.'service.beta.kubernetes.io/aws-load-balancer-ssl-cert'
     #     value:
+
+  reloader:
+    enabled: false
+    syncWave: 0
+    namespace: reloader
